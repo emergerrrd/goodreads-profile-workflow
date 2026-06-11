@@ -77,7 +77,13 @@ function requestList(userId, shelf) {
       .request(
         {
           host: "www.goodreads.com",
-          path: `/review/list_rss/${userId}?shelf=${shelf}`
+          path: `/review/list_rss/${userId}?shelf=${shelf}`,
+          headers: {
+            Accept:
+              "application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.8",
+            "User-Agent":
+              "goodreads-profile-workflow/1.0 (+https://github.com/)"
+          }
         },
         (response) => {
           let data = "";
