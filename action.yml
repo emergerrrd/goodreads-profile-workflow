@@ -23,6 +23,10 @@ inputs:
   template:
     default: "- [$title]($url) by $author (⭐️$average_rating)"
     required: false
+  separator:
+    description: "Separator between rendered books"
+    default: "\n"
+    required: false
   sort_by_fields:
     default: ">pubDate"
     required: false

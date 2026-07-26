@@ -14,6 +14,8 @@ const OUTPUT_ONLY = core.getInput("output_only").toLowerCase() === "true";
 const TEMPLATE =
   core.getInput("template") ||
   "- [$title]($url) by $author (⭐️$average_rating)";
+const SEPARATOR =
+  core.getInput("separator", { trimWhitespace: false }) || "\n";
 const COMMIT_MESSAGE = "Synced and updated with user's goodreads book lists";
 const COMMITTER_USERNAME = "goodreads-books-bot";
 const COMMITTER_EMAIL = "goodreads-books-bot@example.com";
@@ -139,7 +141,7 @@ function buildBookList(books) {
           : "unrated"
       });
     })
-    .join(`\n`);
+    .join(SEPARATOR);
 }
 
 function sortBy(books, sortString) {
